@@ -83,7 +83,7 @@ DATABASES = {
         'USER':'kiranghumare',
         'PASSWORD':'krishnaghumare7',
         'HOST':'database-3.cvd8ubmugdnz.ap-south-1.rds.amazonaws.com',
-        
+        'PORT':'5432'
     }
 }
 
