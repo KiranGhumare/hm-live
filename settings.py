@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'hm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'demo_3',
         'USER':'kiranghumare',
         'PASSWORD':'krishnaghumare7',
