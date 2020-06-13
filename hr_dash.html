@@ -1,0 +1,171 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Hospital</title>
+   	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+   	<style>
+   		#hello{
+   			font-size: 20px;
+   			color: white;
+   			margin-right: 20px;
+   		}
+   	</style>
+  </head>
+  <body>
+  	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Hospital</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'human_resource' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">AboutUs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+      </li>
+   <li class="nav-item">
+        <a class="nav-link" href="{% url 'dash_hr' %}">Dashboard</a>
+      </li>
+    
+    </ul>
+
+  </div>
+  <span id="hello"style="color:white;">Hello, {{request.user}} </span>
+  <p> </p>
+  <span> </span>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="button" class="btn btn-light"> <a href="{% url 'logout' %}" style="color:green">Logout</a></button>
+
+</nav>
+
+
+
+ 
+ <br>
+
+<div class="row">
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="total-appointments">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Patients</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{ total_patients }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="app-done">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Doctors</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{ doc_count }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="upcoming-apps">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Doctors On Duty</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{ active }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+
+<div class="row">
+	<!-- <div class="col-md-6">
+		<h5>Appointments:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'createAppointment' %}">Create Appointments</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Doctor</th>
+					<th>Patient</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+				{% for appoint in appointments %}
+					<tr>
+						<td>{{appoint.date_created|date:"d M Y"}}</td>
+						<td>{{appoint.date_created|time:"H:i"}}</td>
+						<td>{{appoint.doctor}}</td>
+						<td>{{appoint.patient}}</td>
+						<td>{{appoint.status}}</td>
+						<td><a href="" class=" btn btn-primary">Update</a></td>
+						<td><a href="" class=" btn btn-danger">Delete</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div> -->
+
+	<div class="col-md-12">
+		<h5>DOCTORS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary" href="#">Doctors</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Name</th>
+					<th>Phone</th>
+					<th>Email</th>
+					<th>Gender</th>
+					<th>Age</th>
+					<th>Status</th>
+					<th>Department</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+				{% for doc in docs %}
+					<tr>
+						<td>{{doc.user.username}}</td>
+						<td>{{doc.phone}}</td>
+						<td>{{doc.user.email}}</td>
+						<td>{{doc.gender}}</td>
+						<td>{{doc.age}}</td>
+						<td>{{doc.status}}</td>
+						<td>{{doc.dept}}</td>
+						<td><a href="{% url 'update_doctor' doc.id %}" class=" btn btn-primary">Update</a></td>
+						<td><a href="{% url 'delete_doctor' doc.id %}" class=" btn btn-danger">Delete</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
