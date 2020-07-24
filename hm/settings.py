@@ -19,13 +19,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'cv=(hy9a($ar6vo%4!b!(c%(^h08s2pf1qjat45qg(uiw5(t18'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['dummy-0.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -38,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'division',
-    'storages'
+    
 ]
 
 MIDDLEWARE = [
@@ -77,11 +75,11 @@ WSGI_APPLICATION = 'hm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'demo_3',
-        'USER':'kiranghumare',
-        'PASSWORD':'krishnaghumare7',
-        'HOST':'database-3.cvd8ubmugdnz.ap-south-1.rds.amazonaws.com',
+        'ENGINE': 'django.db.backends.',
+        'NAME': '',
+        'USER':'',
+        'PASSWORD':'',
+        'HOST':'',
         
     }
 }
@@ -135,13 +133,3 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT= os.path.join(BASE_DIR, 'static/images')
 
-AWS_ACCESS_KEY_ID='AKIAXBCEZ6N6KRNEFJHU'
-AWS_SECRET_ACCESS_KEY='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'
-AWS_STORAGE_BUCKET_NAME='kiranghumare7'
-AWS_S3_HOST='s3.ap-south-1b.amazonaws.com'
-AWS_S3_REGION_NAME='ap-south-1'
-
-AWS_S3_FILE_OVERWRITE=False
-AWS_DEFAULT_ACL=None
-DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
